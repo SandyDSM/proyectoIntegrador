@@ -1,0 +1,182 @@
+.containerShoppingCart{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.totalPriceProduct{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: auto;
+    width: 25%;
+    display: block;
+}
+.totalP{
+     display: flex;
+}
+.finalPrice{
+    margin: auto 10px;
+    font-size: 18px;
+}
+
+.btnPayProducts{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btnPay{
+    background-color: #e9ae4a;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    height: 35px;
+    width: 80%;
+    cursor: pointer;
+    margin: auto;
+}
+
+.producto1, .producto2{
+    border-bottom: 1px solid #000000;
+    width: 95%;
+    display: flex;
+    margin-top: 20px;
+}
+
+.producto{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 15%;
+}
+.info-product{
+    list-style: none;
+    margin-left: 20px;
+}
+
+.tittle-available{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.tittle-available h2{
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+.tittle-available h2 a{
+    color: black;
+    text-decoration: none;
+}
+.available{
+    color: #007600 !important;
+}
+
+.section-links{
+    display: flex;
+    margin-top: 10px;
+}
+.quantityProduct{
+    border: 1px solid rgb(164, 163, 163);
+    background-color: #e9e9ed;
+    border-radius: 5px;
+    text-align: center;
+    text-indent: 5px;
+    padding: 3px;
+}
+.quantity{
+    background-color: transparent;
+    border: none;
+}
+
+.separator{
+    font-size: 18px; 
+    margin-left: 10px;
+    color: rgb(167, 164, 164);
+}
+.linksP{
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+.price-product h2{
+    margin: -35px 180% 10px;
+    font-weight: bold;
+}
+
+/*========================= MEDIA QUERY =========================*/
+@media screen and (max-width:599px){
+    section .containerShoppingCart{
+        display: block;
+    }
+
+    section .totalPriceProduct{
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    section .producto1,section .producto2{
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        width: 100%;
+    }
+    
+    section .producto{
+        width: 35%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .info-product{
+        margin: auto 15px;
+    }
+
+    section .price-product h2{
+        height: 25px;
+        margin: -5px auto 5px auto;
+    }
+
+    section .tittle-available{
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    #cloths, .product-gift {
+        display: none;
+    }
+
+    section .section-links{
+        display: block;
+        margin: 20px auto 10px auto;
+    }
+    section .quantityProduct{
+        width: 80%;
+    }        
+        
+    section .linksP{
+        border: 1px solid rgb(171, 167, 167);
+        border-radius: 5px;
+        margin: 10px auto;
+        height: 30px;
+        width: 120%;
+        text-align: center;
+    }
+
+    .separator, .delet-product{
+        display: none;
+    }
+}
+
+@media screen and (mai-width:600px) and (max-width: 1023px){
+
+
+}
+
+@media screen and (min-width:1024px){
+    .btnPay{
+        opacity: 0.8;
+    }
+    .btnPay:hover{
+        opacity: 1;
+    }
+}

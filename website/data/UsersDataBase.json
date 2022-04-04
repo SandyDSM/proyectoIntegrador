@@ -1,0 +1,22 @@
+[
+ {
+  "id": 1,
+  "nameSignUp": "Sandra De Los Santos",
+  "usernameSignUp": "sand88",
+  "emailSignUp": "sad.zoe@gmail.com",
+  "passwordSingUp": "Sandra880326",
+  "nacimiento": "26031988",
+  "radioSex": "femenino",
+  "foto": "sandy.png"
+ },
+ {
+  "id": 2,
+  "nameSignUp": "Jose Carlos Lopez",
+  "usernameSignUp": "carlos88",
+  "emailSignUp": "jo_carlos07@hotmail.com",
+  "passwordSingUp": "Admin123",
+  "nacimiento": "05041998",
+  "radioSex": "masculino",
+  "foto": "jose.jpg"
+ }
+]
