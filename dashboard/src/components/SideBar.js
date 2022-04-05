@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../assets/images/logo-DH.png';
+import image from '../assets/images/logo_hor_neg.png';
 
 function SideBar(){
     return(
@@ -21,20 +21,20 @@ function SideBar(){
                 <li className="nav-item active">
                     <a className="nav-link" href="/">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - DH movies</span></a>
+                        <span>Dashboard - Inventario</span></a>
                 </li>
 
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider"/>
 
                 {/*<!-- Heading -->*/}
-                <div className="sidebar-heading">Actions</div>
+                <div className="sidebar-heading">Menú</div>
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
                     <a className="nav-link collapsed" href="/">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span>Tipos de productos</span>
                     </a>
                 </li>
 
@@ -42,14 +42,14 @@ function SideBar(){
                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
+                        <span>Totales</span></a>
                 </li>
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item">
                     <a className="nav-link" href="/">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                        <span>Productos en stock</span></a>
                 </li>
 
                 {/*<!-- Divider -->*/}
