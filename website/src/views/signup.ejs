@@ -12,6 +12,9 @@
 
     <main class="mainSignUp">
       <section>
+        <div class="errores">
+          <ul></ul>
+        </div>
         <form
           action="/clients/addCli"
           method="post"
@@ -110,9 +113,6 @@
               <% } %> <% if (locals.errorsUser && errorsUser.mailUser) { %>
               <p class="is-dangeros"><%= errorsUser.mailUser.msg %></p>
               <% } %>
-            </div>
-            <div class="errores">
-              <ul></ul>
             </div>
           </div>
           <div class="termsConditions">

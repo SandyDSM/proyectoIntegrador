@@ -12,7 +12,7 @@ window.addEventListener("load", function () {
     let nacimiento = document.querySelector(".nacimiento");
     let generoM = document.querySelector(".radioSexMen");
     let generoF = document.querySelector(".radioSexWomen");
-    let terminos = document.querySelector("checkbox");
+    let terminos = document.querySelector("#terms-conditionsCli");
 
     if (nombreCli.value == "") {
       erroresFront.push("Ingresa tu nombre completo ");
@@ -28,21 +28,21 @@ window.addEventListener("load", function () {
     }
     if (contrasena.value == "") {
       erroresFront.push("Ingresa una contraseña");
-    } else if (contrasena.value.length > 8) {
+    } else if (contrasena.value.length < 8) {
       erroresFront.push("La contraseña debe ser mayor de más de 8 carácteres");
     }
     if (rcontrasena.value == "") {
       erroresFront.push("Confirma tu contraseña");
-    } else if (rcontrasena.value == contrasena.value) {
+    } else if (rcontrasena.value != contrasena.value) {
       erroresFront.push("La contraseña no coincide");
     }
     if (nacimiento.value == "") {
       erroresFront.push("Ingresa tu fecha de nacimiento");
     }
-    if (genero.value == "") {
-      erroresFront.push("Elige un genero");
+    if (!generoM.checked && !generoF.checked) {
+      erroresFront.push("Elige un género");
     }
-    if (terminos.value == "") {
+    if (!terminos.checked) {
       erroresFront.push("Acepta los términos y condiciones");
     }
 
