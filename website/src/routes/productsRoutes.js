@@ -75,5 +75,7 @@ productsR.post(
   productsC.createProduct
 );
 productsR.post("/products/search", productsC.search);
+productsR.get("/products/carrito", productsC.cart);
+productsR.post("/products/carrito", productsC.createCart);
 
 module.exports = productsR;

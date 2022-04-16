@@ -13,6 +13,7 @@ const Color = db.Color;
 const Size = db.Size;
 const Imagen = db.Imagen;
 const Type_product = db.Type_product;
+const Cart = db.Cart;
 
 function getProductosTypes() {
   const obtenerProducts = Product.findAll({
@@ -47,11 +48,7 @@ const productsC = {
       include: [{ association: "stock" }, { association: "type_products" }],
     });
     const obtenerStock = Stock.findAll({
-      include: [
-        { association: "sizes" },
-        { association: "images" },
-        { association: "products" },
-      ],
+      include: [{ association: "sizes" }, { association: "products" }],
     });
     Promise.all([obtenerProducts, obtenerStock])
       .then(function ([productos, inventario]) {
@@ -121,18 +118,14 @@ const productsC = {
     const obtenerStock = Stock.findAll({
       include: [
         { association: "sizes" },
-        { association: "images" },
         { association: "products" },
         { association: "colors" },
       ],
       where: { products_model: model },
     });
-    const obtenerMiniaturas = Imagen.findAll({
-      include: [{ association: "stock" }],
-    });
-    Promise.all([obtenerProducts, obtenerStock, obtenerMiniaturas])
-      .then(function ([producto, stock, miniaturas]) {
-        res.render("detail-product", { producto, stock, miniaturas });
+    Promise.all([obtenerProducts, obtenerStock])
+      .then(function ([producto, stock]) {
+        res.render("detail-product", { producto, stock });
       })
       .catch((error) => res.send(error));
   },
@@ -189,7 +182,6 @@ const productsC = {
   },
   search: (req, res) => {
     const busqueda = req.body.searchClothes;
-    console.log(`Variable busqueda: ${busqueda}`);
     const obtenerProducts = Product.findAll({
       include: [{ association: "stock" }, { association: "type_products" }],
       where: {
@@ -208,15 +200,71 @@ const productsC = {
       },
     });
     const obtenerStock = Stock.findAll({
+      include: [{ association: "sizes" }, { association: "products" }],
+    });
+    Promise.all([obtenerProducts, obtenerStock])
+      .then(function ([productos, inventario]) {
+        res.render("search.ejs", { productos, inventario });
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  },
+  cart: (req, res) => {
+    let clientInCookie = req.cookies.clientRegister;
+    const obtenerCarrito = Cart.findOne({
+      include: [{ association: "clients" }, { association: "stock" }],
+      where: { user_id: clientInCookie },
+    });
+    const obtenerStock = Stock.findAll({
+      include: [{ association: "sizes" }, { association: "products" }],
+    });
+    Promise.all([obtenerCarrito, obtenerStock])
+      .then(function ([carrito, stockT]) {
+        console.log(JSON.stringify(carrito.stock[0].id_Stock, null, 2));
+        res.render("shoppingcart", { carrito, stockT });
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  },
+  createCart: (req, res) => {
+    const modelo = req.body.modelo;
+
+    const color = req.body.colors;
+    const talla = req.body.talla;
+
+    const obtenerStock = Stock.findAll({
       include: [
         { association: "sizes" },
         { association: "images" },
         { association: "products" },
       ],
+      where: {
+        [Op.and]: [
+          {
+            products_model: modelo,
+          },
+          {
+            color_id: color,
+          },
+          {
+            sizes_id: talla,
+          },
+        ],
+      },
     });
-    Promise.all([obtenerProducts, obtenerStock])
-      .then(function ([productos, inventario]) {
-        res.render("search.ejs", { productos, inventario });
+    Promise.all([obtenerStock])
+      .then(function ([id_stock]) {
+        //console.log(id_stock);
+        //res.redirect("/products/shoppingcart", { id_stock });
+        Cart.create({
+          user_id: req.cookies.clientRegister,
+        })
+          .then(() => {
+            return res.redirect("/products/addStock");
+          })
+          .catch((error) => res.send(error));
       })
       .catch((error) => {
         res.send(error);

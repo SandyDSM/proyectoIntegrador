@@ -6,10 +6,11 @@ function userLoggedMiddle(req, res, next) {
 
   let clientInCookie = req.cookies.clientRegister;
   let adminInCookie = req.cookies.adminRegister;
+  //console.log(`cliente: ${req.cookies.clientRegister}`);
 
   if (clientInCookie) {
     db.Client.findByPk(clientInCookie).then((cliente) => {
-      console.log(cliente);
+      //console.log(cliente);
       if (cliente) {
         req.session.userLogged = cliente;
       }

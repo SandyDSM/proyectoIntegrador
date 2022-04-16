@@ -1,118 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Carrito de Compras - Cool Cloth</title>
     <%- include('./partials/head') %>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--===================================  HEADER ===================================-->
     <%- include ('partials/navBar') %>
     <!--===============================================================================-->
 
-        <main>
-            <section>
-                <div class="containerShoppingCart">
-                    <form action="" class="totalPriceProduct">
-                        <div class="totalP">
-                            <span class="finalPrice">Precio Final: </span>
-                            <h2 class="totalFinal">$000.00</h2>
-                        </div>
-                        <div class=btnPayProducts>
-                            <input type="submit" class="btnPay" value="Proceder a Pagar">
-                        </div>
-                    </form>
+    <main>
+      <section>
+        <div class="containerShoppingCart">
+          <form action="" class="totalPriceProduct">
+            <div class="totalP">
+              <span class="finalPrice">Precio Final: </span>
+              <% const total = 500 %>
+              <h2 class="totalFinal"><%= total %></h2>
+            </div>
+            <div class="btnPayProducts">
+              <input type="submit" class="btnPay" value="Proceder a Pagar" />
+            </div>
+          </form>
 
-                    <div class="containerProducts">
-                        <div class="producto1">
-                            <input type="checkbox" name="cloths" id="cloths">
-                            <img src="img/img_04.png" class="producto" alt="producto1">
-                            <div class="info-product shopping-cart">
-                                <div class="tittle-available">
-                                    <h2><a href="product">Producto 1</a></h2>
-                                    <div class="price-product">
-                                        <h2>$000.00</h2>
-                                    </div>
-                                    <span class="available">Disponible</span>
-                                </div>
-                                <div class="container-giftQuantity">
-                                    <div class="product-gift">
-                                        <label for="gift0">
-                                            <input type="checkbox" name="gift0" id="gift0">
-                                            Para regalar</label>
-                                    </div>
-                                    <div class="section-links">
-                                        <div class="quantityProduct">
-                                            <label for="quantity">Cantidad:</label>
-                                            <select name="quantity" style="font-size: 14px; outline: none;"
-                                                class="quantity" id="quantity">
-                                                <option value="none"> 0</option>
-                                                <option value="1" selected="selected">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                        <span class="separator">|</span>
-                                        <input type="submit" class="linksP delet-product" value="Eliminar">
-                                        <span class="separator">|</span>
-                                        <input type="submit" class="linksP similar-products"
-                                            value="Ver productos similares">
-                                        <span class="separator">|</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="producto2">
-                            <input type="checkbox" name="cloths" id="cloths">
-                            <img src="img/img_02.png" class="producto" alt="producto1">
-                            <div class="info-product shopping-cart">
-                                <div class="tittle-available">
-                                    <h2><a href="product">Producto 2</a></h2>
-                                    <div class="price-product">
-                                        <h2>$000.00</h2>
-                                    </div>
-                                    <span class="available">Disponible</span>
-                                </div>
-                                <div class="container-giftQuantity">
-                                    <div class="product-gift">
-                                        <label for="gift0">
-                                            <input type="checkbox" name="gift0" id="gift0">
-                                            Para regalar</label>
-                                    </div>
-                                    <div class="section-links">
-                                        <div class="quantityProduct">
-                                            <label for="value">Cantidad:</label>
-                                            <select name="quantity" style="font-size: 14px; outline: none;"
-                                                class="quantity" id="">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                        <span class="separator">|</span>
-                                        <input type="submit" class="linksP delet-product" value="Eliminar">
-                                        <span class="separator">|</span>
-                                        <input type="submit" class="linksP similar-products"
-                                            value="Ver productos similares">
-                                        <span class="separator">|</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <div class="containerProducts">
+            <% for (let i = 0; i < carrito.stock.length; i++) { %>
+            <div class="producto1">
+              <img
+                src="/img/<%=carrito.stock[i].imgSecu_stock%>"
+                class="producto"
+                alt="<%=carrito.stock[i].imgSecu_stock%>"
+              />
+              <div class="info-product shopping-cart">
+                <div class="tittle-available">
+                  <h2>
+                    <% console.log(carrito.stock[i].imgSecu_stock) %>
+                    <a href="#"><%=carrito.stock[i].products_model %> </a>
+                  </h2>
+                  <div class="price-product">
+                    <% console.log(stockT.length ) %>
+                    <h2>$250</h2>
+                  </div>
+                  <span class="available">Disponible</span>
                 </div>
-            </section>
-        </main>
+                <div class="container-giftQuantity">
+                  <div class="product-gift">
+                    <label for="gift0">
+                      <input type="checkbox" name="gift0" id="gift0" />
+                      Para regalar</label
+                    >
+                  </div>
+                  <div class="section-links">
+                    <div class="quantityProduct">
+                      <label for="quantity">Cantidad:</label>
+                      <select
+                        name="quantity"
+                        style="font-size: 14px; outline: none"
+                        class="quantity"
+                        id="quantity"
+                      >
+                        <option value="none">0</option>
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <span class="separator">|</span>
+                    <input
+                      type="submit"
+                      class="linksP delet-product"
+                      value="Eliminar"
+                    />
+                    <span class="separator">|</span>
+                    <input
+                      type="submit"
+                      class="linksP similar-products"
+                      value="Ver productos similares"
+                    />
+                    <span class="separator">|</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }%>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        <!--=================================== FOOTER ===================================-->
-        <%- include ('partials/footer') %>
-        <!--==============================================================================-->
-</body>
-
+    <!--=================================== FOOTER ===================================-->
+    <%- include ('partials/footer') %>
+    <!--==============================================================================-->
+  </body>
 </html>
